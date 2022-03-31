@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -20,15 +19,23 @@ public class Games {
 	private Long id;
 	@NotNull
 	private String nome;
-	@NotNull
-	@Size(min = 4, max = 4)
+	@NotNull	
 	private int lancamento;	
 	private double preco;
+	
 	@ManyToOne
 	@JsonIgnoreProperties("games")
 	private Categoria categoria;
 	
 	
+	
+	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 	public Long getId() {
 		return id;
 	}

@@ -22,9 +22,13 @@ public class Categoria {
 	private Long id;
 	@NotNull
 	private String tipo;
+	
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("categoria")
 	private List<Games> games;
+	
+	
+	
 	public Long getId() {
 		return id;
 	}
