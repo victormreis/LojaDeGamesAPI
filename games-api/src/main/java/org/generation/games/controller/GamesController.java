@@ -1,6 +1,5 @@
 package org.generation.games.controller;
 
-
 import java.util.List;
 
 import org.generation.games.model.Games;
@@ -22,45 +21,43 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/games")
 @CrossOrigin(origins = "*")
 public class GamesController {
-	
+
 	@Autowired
 	private GamesRepository repo;
-	
+
 	@GetMapping
-	public ResponseEntity<List<Games>> getAll ()
-	{
+	public ResponseEntity<List<Games>> getAll() {
 		return ResponseEntity.ok(repo.findAll());
 	}
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Games> getById (@PathVariable Long id)
-	{
+	public ResponseEntity<Games> getById(@PathVariable Long id) {
 		return repo.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
-	
+
 	}
-	
-	@GetMapping ("/nome/{nome}")
-	public ResponseEntity<List<Games>> getByName (@PathVariable String nome){
+
+	@GetMapping("/nome/{nome}")
+	public ResponseEntity<List<Games>> getByName(@PathVariable String nome) {
 		return ResponseEntity.ok(repo.findAllByNomeContainingIgnoreCase(nome));
 	}
-	
-	@GetMapping ("/ano/{lancamento}")
-	public ResponseEntity<List<Games>> getByAno (@PathVariable int lancamento){
+
+	@GetMapping("/ano/{lancamento}")
+	public ResponseEntity<List<Games>> getByAno(@PathVariable int lancamento) {
 		return ResponseEntity.ok(repo.findAllByLancamento(lancamento));
 	}
-	
-	@PostMapping 
-	public ResponseEntity<Games> post (@RequestBody Games games){
+
+	@PostMapping
+	public ResponseEntity<Games> post(@RequestBody Games games) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(repo.save(games));
 	}
-	
+
 	@PutMapping
-	public ResponseEntity<Games> put (@RequestBody Games games){
+	public ResponseEntity<Games> put(@RequestBody Games games) {
 		return ResponseEntity.status(HttpStatus.OK).body(repo.save(games));
 	}
-	
-	@DeleteMapping ("/{id}")
-	public void delete (@PathVariable Long id) {
+
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable Long id) {
 		repo.deleteById(id);
 	}
 

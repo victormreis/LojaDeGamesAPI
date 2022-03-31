@@ -13,56 +13,57 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "tb_games")
 public class Games {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotNull
 	private String nome;
-	@NotNull	
-	private int lancamento;	
+	@NotNull
+	private int lancamento;
 	private double preco;
-	
 	@ManyToOne
 	@JsonIgnoreProperties("games")
 	private Categoria categoria;
-	
-	
-	
-	
+
 	public Categoria getCategoria() {
 		return categoria;
 	}
+
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public int getLancamento() {
 		return lancamento;
 	}
+
 	public void setLancamento(int lancamento) {
 		this.lancamento = lancamento;
 	}
+
 	public double getPreco() {
 		return preco;
 	}
+
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-	
-	
-	
-	
 
 }

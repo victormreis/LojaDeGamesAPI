@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface GamesRepository extends JpaRepository<Games, Long> {
 	public List<Games> findAllByNomeContainingIgnoreCase(String nome);
-	public List<Games> findAllByLancamento (int lancamento);
+
+	public List<Games> findAllByLancamento(int lancamento);
 
 }
