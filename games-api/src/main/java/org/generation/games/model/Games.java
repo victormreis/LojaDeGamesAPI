@@ -23,8 +23,20 @@ public class Games {
 	private int lancamento;
 	private double preco;
 	@ManyToOne
-	@JsonIgnoreProperties("games")
+	@JsonIgnoreProperties("Games")
 	private Categoria categoria;
+
+	@ManyToOne
+	@JsonIgnoreProperties("Games")
+	private Usuario usuario;
+
+	public Usuario getUsuarios() {
+		return usuario;
+	}
+
+	public void setUsuarios(Usuario usuarios) {
+		this.usuario = usuarios;
+	}
 
 	public Categoria getCategoria() {
 		return categoria;
